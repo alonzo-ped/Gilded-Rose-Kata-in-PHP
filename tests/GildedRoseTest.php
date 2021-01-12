@@ -52,7 +52,17 @@ class GildedRoseTest extends TestCase
         $item->tick();
         $this->assertTrue($item->quality === 50, $item->quality);
 
-        $item = GildedRose::of('pineapple', 100, 4);
+//        $item = GildedRose::of('pineapple', 100, 4);
+//        $this->assertTrue($item->quality === 50);
+    }
+
+    public function testThatSulfurasNeverHasToBeSoldAndNeverDecreasesInQuality(): void
+    {
+        $item = GildedRose::of('Sulfuras, Hand of Ragnaros', 50, 4);
+        $item->tick();
+        $item->tick();
+        $item->tick();
         $this->assertTrue($item->quality === 50);
+        $this->assertTrue($item->sellIn === 4);
     }
 }
