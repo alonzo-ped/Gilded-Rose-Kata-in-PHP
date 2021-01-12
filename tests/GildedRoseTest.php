@@ -44,4 +44,15 @@ class GildedRoseTest extends TestCase
         $item->tick();
         $this->assertTrue($item->quality === 6);
     }
+    public function testTheQualityOfAnItemIsNeverMoreThanFifty(): void
+    {
+        $item = GildedRose::of('Aged Brie', 48, 1);
+        $item->tick();
+        $item->tick();
+        $item->tick();
+        $this->assertTrue($item->quality === 50, $item->quality);
+
+        $item = GildedRose::of('pineapple', 100, 4);
+        $this->assertTrue($item->quality === 50);
+    }
 }
