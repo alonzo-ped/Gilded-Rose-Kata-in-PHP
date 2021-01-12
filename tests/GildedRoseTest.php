@@ -36,4 +36,12 @@ class GildedRoseTest extends TestCase
         $item->tick();
         $this->assertTrue($item->quality === 2);
     }
+
+    public function testThatAgedBrieIncreasesInQualityAsItAges(): void
+    {
+        $item = GildedRose::of('Aged Brie', 4, 4);
+        $item->tick();
+        $item->tick();
+        $this->assertTrue($item->quality === 6);
+    }
 }
