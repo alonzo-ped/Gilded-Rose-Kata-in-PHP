@@ -18,4 +18,12 @@ class GildedRoseTest extends TestCase
         $item = GildedRose::of('eggplant', 4, 5);
         $this->assertObjectHasAttribute('quality', $item);
     }
+
+    public function testThatAnItemQualityAndSellInDecreaseEachDay(): void
+    {
+        $item = GildedRose::of('apple', 4, 4);
+        $item->tick();
+        $this->assertTrue($item->quality === 3);
+        $this->assertTrue($item->sellIn === 3);
+    }
 }
