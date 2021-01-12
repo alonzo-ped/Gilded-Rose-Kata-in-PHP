@@ -1,6 +1,6 @@
 <?php
 
-namespace Pedstores;
+namespace Pedstores\App;
 
 class GildedRose
 {
