@@ -26,4 +26,14 @@ class GildedRoseTest extends TestCase
         $this->assertTrue($item->quality === 3);
         $this->assertTrue($item->sellIn === 3);
     }
+
+    public function testThatQualityDegradesTwiceAsFastAfterSellIn(): void
+    {
+        $item = GildedRose::of('persimmon', 6, 2);
+        $item->tick();
+        $item->tick();
+        $this->assertTrue($item->quality === 4);
+        $item->tick();
+        $this->assertTrue($item->quality === 2);
+    }
 }
