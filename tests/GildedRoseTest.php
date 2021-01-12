@@ -65,4 +65,29 @@ class GildedRoseTest extends TestCase
         $this->assertTrue($item->quality === 50);
         $this->assertTrue($item->sellIn === 4);
     }
+
+    public function testThatBackStagePassesIncreaseInQualityEtAl(): void
+    {
+        $item = GildedRose::of('Backstage passes to a TAFKAL80ETC concert', 5, 12);
+        $item->tick();
+        $item->tick();
+        $this->assertTrue($item->quality === 7);
+        $this->assertTrue($item->sellIn === 10);
+        $item->tick();
+        $item->tick();
+        $this->assertTrue($item->quality === 11);
+        $item->tick();
+        $item->tick();
+        $item->tick();
+        $item->tick();
+        $this->assertTrue($item->quality === 20);
+        $item->tick();
+        $item->tick();
+        $item->tick();
+        $item->tick();
+        $this->assertTrue($item->quality === 32);
+        $item->tick();
+        $this->assertTrue($item->quality === 0);
+        $this->assertTrue($item->sellIn === -1);
+    }
 }
