@@ -1,0 +1,16 @@
+{
+    "name": "pedstores/app",
+    "description": "The Gilded Rose Kata",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alonzo Turner",
+            "email": "alonzo.turner@pedstores.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}

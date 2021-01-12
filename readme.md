@@ -1,19 +1,6 @@
 # The Gilded Rose Kata
 
-## Setup
-
-This repository includes the initial setup for this Kata, including the specs. It uses the [Kahlan library](http://kahlan.readthedocs.org/en/latest/), which you might not be familiar with. But, don't worry, there's nothing really to learn. Review the specs, and you'll understand the basic syntax in less than a minute.
-
-Your job is to:
-
-1. Refactor the monstrous code in the `GildedRose.php` class.
-2. Add a new item type, "Conjured". The specs for this item are commented out in the `GildedRoseSpec.php` file.
-
-When finished (or for help), you may review the solution by switching to the "solution" branch of this repo.
-
-## Rules
-
-Hi and welcome to team Gilded Rose. As you know, we are a small inn with a prime location in a prominent city ran by a friendly innkeeper named Allison. We also buy and sell only the finest goods. Unfortunately, our goods are constantly degrading in quality as they approach their sell by date. We have a system in place that updates our inventory for us. It was developed by a no-nonsense type named Leeroy, who has moved on to new adventures.
+Hello and welcome to the Gilded Rose. As you know, we are a small inn with a prime location in a prominent city run by a friendly innkeeper named Allison. We also buy and sell only the finest goods. Unfortunately, our goods are constantly degrading in quality as they approach their sell by date. We have a system in place that updates our inventory for us. It was developed by a no-nonsense type guy named Leeroy, who has moved on to new adventures. 
 
 **Your task is to add the new feature to our system so that we can begin selling a new category of items.**
 
