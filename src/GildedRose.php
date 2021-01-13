@@ -2,85 +2,23 @@
 
 namespace Pedstores\App;
 
+use Pedstores\App\Items\ItemInterface;
+
 class GildedRose
 {
-    public $name;
+    protected static $classMap = [
+        Items\AgedBrie::ITEM_NAME => Items\AgedBrie::class,
+        Items\BackstagePass::ITEM_NAME => Items\BackstagePass::class,
+        Items\Conjured::ITEM_NAME => Items\Conjured::class,
+        Items\Sulfuras::ITEM_NAME => Items\Sulfuras::class,
+    ];
 
-    public $quality;
-
-    public $sellIn;
-
-    public function __construct(string $name, int $quality, int $sellIn)
+    public static function getItem($name, $quality, $sellIn): Items\AbstractItem
     {
-        $this->name = $name;
-        $this->quality = min($quality, 50);
-        $this->sellIn = $sellIn;
-    }
-
-    public static function getItem($name, $quality, $sellIn) {
-        return new static($name, $quality, $sellIn);
-    }
-
-    public function numberOfDaysPassed(int $days): void
-    {
-        foreach(range(1, $days) as $count) {
-            switch ($this->name) {
-                case 'Aged Brie':
-                    $this->agedBrieDayPassed();
-                    break;
-                case 'Backstage passes to a TAFKAL80ETC concert':
-                    $this->backstagePassDayPassed();
-                    break;
-                case 'Conjured':
-                    $this->conjuredDayPassed();
-                    break;
-                case 'Sulfuras, Hand of Ragnaros':
-                    break;
-                default:
-                    $this->defaultDayPassed();
-                    break;
-            }
-        }
-    }
-
-    private function defaultDayPassed(): void
-    {
-        $this->sellIn--;
-        if ($this->sellIn >= 0) {
-            $this->quality = max($this->quality - 1, 0);
+        if (isset(self::$classMap[$name])) {
+            return new self::$classMap[$name]($name, $quality, $sellIn);
         } else {
-            $this->quality = max($this->quality - 2, 0);
+            return new Items\Base($name, $quality, $sellIn);
         }
-    }
-
-    private function agedBrieDayPassed(): void
-    {
-        $this->sellIn--;
-        $this->quality = min($this->quality + 1, 50);
-    }
-
-    private function backstagePassDayPassed(): void
-    {
-        $this->sellIn--;
-        if ($this->sellIn >= 10) {
-            $this->quality = min($this->quality + 1, 50);
-        } elseif ($this->sellIn < 10 && $this->sellIn >= 5) {
-            $this->quality = min($this->quality + 2, 50);
-        } elseif ($this->sellIn < 5 && $this->sellIn >= 0) {
-            $this->quality = min($this->quality + 3, 50);
-        } else {
-            $this->quality = 0;
-        }
-    }
-
-    private function conjuredDayPassed(): void 
-    {
-        $this->sellIn--;
-        if ($this->sellIn >= 0) {
-            $this->quality = max($this->quality - 2, 0);
-        } else {
-            $this->quality = max($this->quality - 4, 0);
-        }
-
     }
 }
