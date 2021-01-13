@@ -23,5 +23,11 @@ We have recently signed a supplier of conjured items. This requires an update to
 
 "Conjured" items degrade in Quality twice as fast as normal items
 
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
 Just for clarification, an item can never have its Quality increase above 50, however "Sulfuras" is a legendary item and as such its Quality is 80 and it never alters.
 
