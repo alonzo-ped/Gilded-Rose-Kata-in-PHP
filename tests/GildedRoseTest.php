@@ -88,4 +88,13 @@ class GildedRoseTest extends TestCase
         $this->assertTrue($item->quality === 0);
         $this->assertTrue($item->sellIn === -1);
     }
+
+    public function testThatConjuredItemsDegradeTwiceAsFast(): void 
+    {
+        $item = GildedRose::getItem('Conjured', 20, 5);
+        $item->numberOfDaysPassed(5);
+        $this->assertTrue($item->quality === 10);
+        $item->numberOfDaysPassed(1);
+        $this->assertTrue($item->quality === 6);
+    }
 }

@@ -31,6 +31,9 @@ class GildedRose
                 case 'Backstage passes to a TAFKAL80ETC concert':
                     $this->backstagePassDayPassed();
                     break;
+                case 'Conjured':
+                    $this->conjuredDayPassed();
+                    break;
                 case 'Sulfuras, Hand of Ragnaros':
                     break;
                 default:
@@ -68,5 +71,16 @@ class GildedRose
         } else {
             $this->quality = 0;
         }
+    }
+
+    private function conjuredDayPassed(): void 
+    {
+        $this->sellIn--;
+        if ($this->sellIn >= 0) {
+            $this->quality = max($this->quality - 2, 0);
+        } else {
+            $this->quality = max($this->quality - 4, 0);
+        }
+
     }
 }
