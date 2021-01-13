@@ -27,6 +27,13 @@ class GildedRoseTest extends TestCase
         $this->assertTrue($item->sellIn === 3);
     }
 
+    public function testThatAnItemQualityNeverDropsBelowZero(): void
+    {
+        $item = GildedRose::getItem('pear', 4, 4);
+        $item->numberOfDaysPassed(6);
+        $this->assertTrue($item->quality === 0);
+    }
+
     public function testThatQualityDegradesTwiceAsFastAfterSellIn(): void
     {
         $item = GildedRose::getItem('persimmon', 6, 2);
