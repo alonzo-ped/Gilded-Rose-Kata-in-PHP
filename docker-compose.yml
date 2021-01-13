@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  php-apache:
+    image: alonzoturner/lamp-stack:latest
+    container_name: gilded-rose
+    environment:
+      - VIRTUAL_HOST=gilded-rose.subtext
+      - VIRTUAL_ADMIN=alonzo.turner@pedstores.com
+    ports:
+    - "80:80"
+    volumes:
+    - ".:/var/www/html"
+    - "~/.gitconfig:/root/.gitconfig"
